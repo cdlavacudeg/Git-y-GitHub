@@ -48,4 +48,7 @@ Las ramas permiten realizar experimentos, corregir errores y un merge une el cam
 `git merge`-> También usamos el comando git merge con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.  
 `git pull`: Básicamente, git fetch y git merge al mismo tiempo.  
 
-`
+`git branch [nombre_de_rama]`-> Crear rama nueva  
+`git chekout [nombre_de_rama]`-> Mover el head a la otra rama  
+`git branch`-> Nombres de las ramas  
+`git merge [nombre_de_la_rama]`->fusiona la rama con la rama actual (preferiblemente master)
