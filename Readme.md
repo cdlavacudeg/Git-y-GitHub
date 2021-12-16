@@ -30,6 +30,7 @@
 <img src="img\git_rm_rs.webp" alt="git rm rs" width="50%">  
 
 `git commit -m "mensaje"`->envia cambios al repositorio con un mensaje  
+`git commit -am "mensaje"`-> hace el add y commit 
 `git log`-> historia de commits (+`--oneline` para ver la historia como una lista,`--stat` cambios en los archivos)  
 `git show [arch]`->mostrar la diferencia con la version anterior  
 `git commit` -> escribir el mensaje y salirse con `esc+shift+z+z` vim  guardar  
@@ -46,3 +47,5 @@ Las ramas permiten realizar experimentos, corregir errores y un merge une el cam
 `git fetch`->Traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local.
 `git merge`-> También usamos el comando git merge con servidores remotos. Lo necesitamos para combinar los últimos cambios del servidor remoto y nuestro directorio de trabajo.  
 `git pull`: Básicamente, git fetch y git merge al mismo tiempo.  
+
+`
