@@ -1,8 +1,10 @@
 # Notas de Git
 
+[Link practica git](https://learngitbranching.js.org/)
+
 ## Git Bash
 
-`cd`-> cambiar directario (home `/`,`/c`,`/user`,`..` volver a carpeta anterior,`tab` autocompletar)  
+`cd`-> cambiar directorio (home `/`,`/c`,`/user`,`..` volver a carpeta anterior,`tab` autocompletar)  
 `ls`-> listar archivos(+`-al`)  
 `clear`-> limpiar consola (tambien`ctr+l`)  
 `mkdir`-> crear carpeta  
@@ -49,6 +51,7 @@ Las ramas permiten realizar experimentos, corregir errores y un merge une el cam
 `git pull`: Básicamente, git fetch y git merge al mismo tiempo.  
 
 `git branch [nombre_de_rama]`-> Crear rama nueva  
+`git checkout -b [yourbranchname]`->Crea la rama y directamente se mueve a esta
 `git chekout [nombre_de_rama]`-> Mover el head a la otra rama  
 `git branch`-> Nombres de las ramas  
 `git merge [nombre_de_la_rama]`->fusiona la rama con la rama actual (preferiblemente master)
