@@ -43,7 +43,7 @@
 Las ramas permiten realizar experimentos, corregir errores y un merge une el cambio y la rama principal.
 
 `git chekout [ind commit, master] [arch]`-> traer los cambios de una rama a local con el commit se envian los cambios a la rama master  
-`git reset [ind commit]`-> volver en el tiempo a un commit anterior (+`--hard`,`--soft`) cuidado!
+`git reset [ind commit]`-> volver en el tiempo a un commit anterior (+`--hard`,`--soft`) cuidado!  
 `git clone [url_del_servidor_remoto]`-> Nos permite descargar los archivos de la última versión de la rama principal y todo el historial de cambios en la carpeta .git.  
 `git push`-> Manda los cambios al servidor remoto.  
 `git fetch`->Traer actualizaciones del servidor remoto y guardarlas en nuestro repositorio local.
@@ -55,3 +55,17 @@ Las ramas permiten realizar experimentos, corregir errores y un merge une el cam
 `git chekout [nombre_de_rama]`-> Mover el head a la otra rama  
 `git branch`-> Nombres de las ramas  
 `git merge [nombre_de_la_rama]`->fusiona la rama con la rama actual (preferiblemente master)
+
+### Repositorio remoto
+
+`git remote add origin [link repositorio]`-> agregar origen remoto de los archivos  
+`git branch -M main`-> cambiar el nombre de la rama master a main   
+`git push -u origin main` -> enviar archivos a repositoria remoto  
+`git pull origin master --allow-unrelated-histories`->traer archivos remotos ignorando commits  
+
+### SSH
+
+`ssh-keygen -t rsa -b 4096 -C "tu@email.com"`->crear Llave
+`eval $(ssh-agent -s)`-> Encedel el "servidor" de llaves SSH de tu computadora  
+`ssh-add ruta-donde-guardaste-tu-llave-privada`-> añadir la llave SSH a el "Servidor"  
+`git remote set-url origin url-ssh-del-repositorio-en-github`-> conectar github por ssh
