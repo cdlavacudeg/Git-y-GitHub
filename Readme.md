@@ -243,6 +243,18 @@ Existe un mundo alternativo en el cual vamos avanzando en una rama pero necesita
 
 cherry-pick es una mala práctica porque significa que estamos reconstruyendo la historia, usa cherry-pick con sabiduría. Si no sabes lo que estás haciendo ten mucho cuidado.
 
+### Remendar un commit
+Puede modificar el commit más reciente (enmendar) en la misma rama ejecutando:
+
+`git add -A` # Para hacer uso de ammend los archivos deben de estar en staging  
+`git commit --amend` # Remendar último commit  
+
+Este comando sirve para agregar archivos nuevos o actualizar el commit anterior y no generar commits innecesarios.
+.
+También es una forma sencilla de editar o agregar comentarios al commit anterior porque abrirá la consola para editar el commit anterior.
+.
+Nota: Es una mala práctica hacer ammend de un commit que ya ha sido pusheado o pulleado del repositorio remoto, al momento de hacer ammend con algún commit que esté en remoto va a generar un conflicto que se va a arreglar haciendo un commit adicional y se perderá el beneficio del ammend.
+
 ## Readme 
 
 [Link editor online readme](https://pandao.github.io/editor.md/en.html)
