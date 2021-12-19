@@ -94,9 +94,10 @@ se copia el hash del commit
 
 ### Comandos utiles
 
-`alias [nombre-escigido]="[comando_git]"`=hacer que un comando asuma un nombre para no escribirlo  
+`alias [nombre-escogido]="[comando_git]"`=hacer que un comando asuma un nombre para no escribirlo  
 `gitk`->ver gráficamente nuestro entorno y flujo de trabajo local con Git usando el comando
-`git merge [nombre_de_la_rama]`->fusiona la rama con la rama actual (preferiblemente master)
+`git merge [nombre_de_la_rama]`->fusiona la rama con la rama actual (preferiblemente master)  
+`git config --global alias.[nombre-escogido] [comando-git]`-> Otra manera de crear un alias
 
 ### Forks o Bifurcaciones
 Es una característica única de GitHub en la que se crea una copia exacta del estado actual de un repositorio directamente en GitHub, éste repositorio podrá servir como otro origen y se podrá clonar (como cualquier otro repositorio), en pocas palabras, lo podremos utilizar como un git cualquiera
@@ -108,6 +109,9 @@ Al hacer un fork de un poryecto en GitHub, te conviertes en dueñ@ del repositor
 Los forks son importantes porque es la manera en la que funciona el open source, ya que, una persona puede no ser colaborador de un proyecto, pero puede contribuír al mismo, haciendo mejor software que pueda ser utilizado por cualquiera.
 .
 Al hacer un fork, GitHub sabe que se hizo el fork del proyecto, por lo que se le permite al colaborador hacer pull request desde su repositorio propio.
+
+Cuando hago un fork de un proyecto en GitHub, ¿lo que logro es?
+hacer una copia del estado actual del proyecto y clonarlo.
 
 ### Trabajando con más de 1 repositorio remoto
 Cuando trabajas en un proyecto que existe en diferentes repositorios remotos (normalmente a causa de un fork) es muy probable que desees poder trabajar con ambos repositorios, para ésto puedes crear un remoto adicional desde consola.
@@ -159,7 +163,7 @@ El stashed nos sirve para guardar cambios para después, Es una lista de estados
 
 Ésto es especialmente útil porque hay veces que no se permite cambiar de rama, ésto porque porque tenemos cambios sin guardar, no siempre es un cambio lo suficientemente bueno como para hacer un commit, pero no queremos perder ese código en el que estuvimos trabajando.
 
-El stashed nos permite cambiar de ramas, hacer cambios, trabajar en otras cosas y, más adelante, retomar el trabajo con los archivos que teníamos en Staging pero que podemos recuperar ya que los guardamos en el Stash.
+El stashed nos permite cambiar de ramas, hacer cambios, trabajar en otras cosas y, más adelante, retomar el trabajo con los archivos que teníamos en Staging pero que podemos recuperar ya que los guardamos en el Stash (en un lugar temporal).
 
 El comando `git stash` guarda el trabajo actual del Staging en una lista diseñada para ser temporal llamada Stash, para que pueda ser recuperado en el futuro.
 
@@ -255,6 +259,52 @@ También es una forma sencilla de editar o agregar comentarios al commit anterio
 .
 Nota: Es una mala práctica hacer ammend de un commit que ya ha sido pusheado o pulleado del repositorio remoto, al momento de hacer ammend con algún commit que esté en remoto va a generar un conflicto que se va a arreglar haciendo un commit adicional y se perderá el beneficio del ammend.
 
+### Git reset y relog
+Git nunca olvida, `git reflog`
+
+Git guarda todos los cambios aunque decidas borrarlos, al borrar un cambio lo que estás haciendo sólo es actualizar la punta del branch, para gestionar éstas puntas existe un mecanismo llamado registros de referencia o reflogs.
+.
+La gestión de estos cambios es mediante los hash’es de referencia (o `ref`) que son apuntadores a los commits.
+.
+Los recoges registran cuándo se actualizaron las referencias de Git en el repositorio local (sólo en el local), por lo que si deseas ver cómo has modificado la historia puedes utilizar el comando:
+
+`git reflog`
+Muchos comandos de Git aceptan un parámetro para especificar una referencia o “ref”, que es un puntero a una confirmación sobre todo los comandos:
+
+`git checkout` Puedes moverte sin realizar ningún cambio al commit exacto de la ref
+
+`git checkout eff544f`
+`git reset`-> Hará que el último commit sea el pasado por la ref, usar este comando sólo si sabes exactamente qué estás haciendo
+
+`git reset --hard eff544f`->Perderá todo lo que se encuentra en staging y en el Working directory y se moverá el head al commit eff544f  
+`git reset --soft eff544f`-> Recuperará todos los cambios que tengas diferentes al commit eff544f, los agregará al staging area y moverá el head al commit eff544f  
+`git merge`-> Puedes hacer merge de un commit en específico, funciona igual que con una branch, pero te hace el merge del estado específico del commit mandado  
+
+`git checkout master`  
+`git merge eff544f`->Fusionará en un nuevo commit la historia de master con el momento específico en el que vive eff544f
+
+
+### Grit grep y log
+
+A medida que nuestro proyecto se hace grande vamos a querer buscar ciertas cosas. Para :
+
+`git grep "palabra a buscar"`->buscar palabras en los archivos en el branch actual  
+`git grep -n "palabra a buscar"`->mostrar la linea en la cual la pablara aparece en el archivoo  
+`git grep -c "palabra a buscar"`->mostrar cuantas veces aparce la palabra en cada archiv  
+`git log -S "palabra a buscar"`->buscar los commits en los cuales sale una palabra  
+
+## Comandos y recursos colaborativos en Git y GitHub
+[Documentación](https://git-scm.com/docs/git-blame)  
+
+`git shortlog`->resumen de cada uno de los commits que hacen los miembros del equipo.  
+`git shortlog -sn`-> muestra cuantos commit han hecho cada miembros del equipo.  
+`git shortlog -sn --all`-> muestra cuantos commit han hecho cada miembros del equipo hasta los que han sido eliminado  
+`git shortlog -sn --all --no-merge`-> muestra cuantos commit han hecho cada miembros quitando los eliminados sin los merges  
+`git blame ARCHIVO -c`-> muestra quien hizo cada cosa linea por linea  
+`git COMANDO --help` -> muestra como funciona el comando.  
+`git blame ARCHIVO -L[linea_inicial,linea_final]`-> muestra quien hizo cada cosa linea por linea indicándole desde que linea ver ejemplo -L35,50  
+`**git branch -r **`->se muestran todas las ramas remotas  
+`git branch -a`-> se muestran todas las ramas tanto locales como remotas
 ## Readme 
 
 [Link editor online readme](https://pandao.github.io/editor.md/en.html)
